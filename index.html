@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkim HK</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body.hidden-all > *:not(.fullscreen) {
+  display: none !important;
+  background: black !important;
+}
+
+  </style>
+  
+
+</head>
+
+
+
+<body class="bg-black text-white font-sans">
+
+<!-- 🔮 Magic Mist Intro -->
+<div id="intro-screen">
+  <canvas id="firefly-canvas"></canvas>
+  <div id="intro-text">Welcome to Hakkim World</div>
+</div>
+<style>
+  #intro-screen {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+}
+
+#firefly-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+}
+
+#intro-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2.8rem;
+  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 2;
+  opacity: 0;
+  text-align: center;
+  animation: fadeInText 2s ease-in-out forwards 1s;
+}
+
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+</style>
+
+<script>
+  const canvas = document.getElementById('firefly-canvas');
+  const ctx = canvas.getContext('2d');
+  let fireflies = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 100; i++) {
+    fireflies.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: Math.random() * 0.5 - 0.25,
+      dy: Math.random() * 0.5 - 0.25
+    });
+  }
+
+  function drawFireflies() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(255, 255, 200, 0.8)';
+    fireflies.forEach(f => {
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fill();
+      f.x += f.dx;
+      f.y += f.dy;
+
+      // Bounce
+      if (f.x < 0 || f.x > canvas.width) f.dx *= -1;
+      if (f.y < 0 || f.y > canvas.height) f.dy *= -1;
+    });
+    requestAnimationFrame(drawFireflies);
+  }
+  drawFireflies();
+
+  // Auto remove intro screen after 5 seconds
+  setTimeout(() => {
+    document.getElementById('intro-screen').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('intro-screen').style.display = 'none';
+    }, 1000);
+  }, 5000);
+</script>
+
+<div id="main-site" style="opacity: 0;">
+  <!-- 🌐 Your entire website starts here -->
+  <!-- Place your cards, quotes, favorite section, etc. here -->
+
+
+
+  <!-- Navigation Menu -->
+  <header class="bg-black fixed top-0 w-full z-50 shadow-md">
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">HK</h1>
+      <ul class="hidden md:flex space-x-6">
+        <li><a href="#about" class="hover:text-gray-400">About</a></li>
+        <li><a href="#inspiration" class="hover:text-gray-400">Inspiration</a></li>
+        <li><a href="#bestfriend" class="hover:text-gray-400">Schoolmate</a></li>
+        <li><a href="#collegemate" class="hover:text-gray-400">Collegemate</a></li>
+        <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+        <li>||</li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+
+
+
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center text-center pt-20" data-aos="fade-in">
+    <div>
+      <img src="hk.jpg" alt="Your Photo" class="mx-auto rounded-full w-40 h-40 mb-6 border-4 border-white">
+      <h1 class="text-5xl md:text-7xl font-bold">Hakkim khan</h1>
+      <p class="mt-4 text-xl md:text-2xl text-gray-400">Full-stack Developer</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-4 max-w-3xl mx-auto" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+    <p class="text-gray-400 leading-relaxed">
+      I'm a passionate full-stack developer with experience in creating elegant and responsive websites. I love minimal design, dark themes, and interactive user experiences.
+    </p><br>
+    <h4>Education :</h4><br>
+    <h3>The Madura College</h3>
+    <h4>BSC.degree in Information Technology</h4>
+    <font color="gray"><h5>Jun-2023</h5></font><br>
+    <p>"During my college life, I gained valuable knowledge in web development and programming languages, which laid a strong foundation for my career in technology."</p>
+
+
+  </section>
+
+  <!-- Inspiration Section -->
+  <section id="inspiration" class="py-20 px-4 max-w-3xl mx-auto" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6">My Inspiration</h2>
+    <p class="text-gray-400 leading-relaxed">
+      "I take great inspiration from Tim Berners-Lee, whose pioneering work in creating the World Wide Web has deeply influenced my interest in web development."
+    </p>
+    <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee">
+    <img src="web.webp" alt="Inspiration" class="mt-6 rounded-lg w-full">
+    </a>
+    <center><h1>Tim Berners-Lee</h1></center>
+  </section>
+
+  <!-- Projects Section -->
+   <section id="hobbies" class="py-20 px-4 max-w-3xl mx-auto" data-aos="fade-up">
+  <h2 class="text-3xl font-bold mb-6">My Hobbies</h2>
+  <ul class="list-disc list-inside text-gray-400">
+    <li>Watching Animes </li>
+    <li>Traveling</li>
+    <li>Badminton</li>
+    <li>Coding</li>
+  </ul>
+</section>
+
+  
+
+    <!-- Best Friend Page Link -->
+  <section id="bestfriend" class="py-20 px-4 max-w-3xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6">My childhood Friends</h2>
+    <p class="text-gray-400 mb-4">Click below visit a Memories</p>
+    <a href="bestfriend.html" class="inline-block mt-4 px-6 py-3 border border-white rounded-full hover:bg-white hover:text-black transition">Click here</a>
+  </section>
+
+  <!-- Collegemate Page Link -->
+  <section id="collegemate" class="py-20 px-4 max-w-3xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6">My college Friends</h2>
+    <p class="text-gray-400 mb-4">Click below visit my college Memories </p>
+    <a href="collegemate.html" class="inline-block mt-4 px-6 py-3 border border-white rounded-full hover:bg-white hover:text-black transition">Click here</a>
+  </section>
+
+<!-- Best Quotes Section with Black Background -->
+<section class="bg-black text-white py-12 px-6">
+  <h2 class="text-3xl font-bold text-center mb-10">🌟 My favorite quotes</h2>
+
+  <div class="space-y-8 max-w-2xl mx-auto">
+
+    <!-- Quote 1 -->
+    <div class="flex items-start bg-gray-950 p-6 rounded-lg shadow-lg transform translate-x-full opacity-0 animate-slide-in-right">
+      <img src="img1.jpg" alt="Franklin D. Roosevelt" class="w-16 h-16 rounded-full mr-4 object-cover">
+      <div>
+        <p class="text-lg italic">“Be sure you put your feet in the right place, then stand firm.”</p>
+        <p class="text-right mt-2 text-sm text-gray-400">- Walt Disney</p>
+      </div>
+    </div>
+
+    <!-- Quote 2 -->
+    <div class="flex items-start bg-gray-950 p-6 rounded-lg shadow-lg transform translate-x-full opacity-0 animate-slide-in-right">
+      <img src="img3.jpeg" alt="Winston Churchill" class="w-16 h-16 rounded-full mr-4 object-cover">
+      <div>
+        <p class="text-lg italic">All our dreams can come true if we have the courage to pursue them</p>
+        <p class="text-right mt-2 text-sm text-gray-400">– Winston Churchill</p>
+      </div>
+    </div>
+
+    <!-- Add more quotes as needed -->
+
+  </div>
+</section>
+
+<!-- Add animation styles -->
+<style>
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+  }
+</style>
+
+<style>
+ 
+
+    body {
+      background-color: #0e0e0e;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: #ffffff;
+    }
+
+  #my-favorites h1 {
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+  }
+</style>
+
+
+
+<style>
+
+.card-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 150px;
+      height: 180px;
+      background-color: #222;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-title {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 6px 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    .overlay img {
+      max-width: 80vw;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    .overlay p {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+</style>
+
+<center> <h2>FAVORITES</h2></center>
+  <div class="card-container">
+  <div class="card" onclick="showOverlay('bmw12.jpeg', 'sound1.mp3', 'BMW has always been my favorite—owning one is a dream I’m determined to fulfill.My heart races for BMW—its my ultimate dream car.')">
+    <img src="bmw3.jpg" alt="Card 1">
+    <div class="card-title">CAR</div>
+  </div>
+  <div class="card" onclick="showOverlay('beau.webp', 'canam.mp3', 'Canada holds a special place in my heart; living there is my dream.')">
+    <img src="cana1.jpeg" alt="Card 2">
+    <div class="card-title">PLACE</div>
+  </div>
+  <div class="card">
+    <img src="blue.png" alt="Card 3">
+    <div class="card-title">COLOR</div>
+  </div>
+  <div class="card">
+    <img src="briya.jpg" alt="Card 4">
+    <div class="card-title">FOOD<BR>
+      <P>BRIYANI</P>
+    </div>
+
+  </div>
+  <div class="card" onclick="showOverlay('im1.jpg', 'anu.mp3', '❤️❣️')">
+    <img src="im.jpg" alt="Card 1">
+    <div class="card-title">MOVIE</div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <button class="close-btn" onclick="closeOverlay()">×</button>
+  <img id="overlayImage" src="" alt="Big Image">
+  <p id="overlayText"></p>
+  <audio id="overlayAudio" autoplay></audio>
+</div>
+
+<script>
+  function showOverlay(imageSrc, audioSrc, text) {
+    const overlay = document.getElementById("overlay");
+    const overlayImage = document.getElementById("overlayImage");
+    const overlayAudio = document.getElementById("overlayAudio");
+    const overlayText = document.getElementById("overlayText");
+
+    overlayImage.src = imageSrc;
+    overlayAudio.src = audioSrc;
+    overlayText.innerText = text;
+
+    overlay.style.display = "flex";
+  }
+
+  function closeOverlay() {
+    const overlay = document.getElementById("overlay");
+    const overlayAudio = document.getElementById("overlayAudio");
+
+    overlay.style.display = "none";
+    overlayAudio.pause();
+    overlayAudio.currentTime = 0;
+  }
+</script>
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 max-w-3xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+    <p class="text-gray-400 mb-4">
+I love to hear from you. Whether you have a question or just want to chat about design, tech & art — shoot me a message.</p>  
+ <h4 style="margin-left: 0px;">REACH ME AT :</h4><br>
+  <font color="gray"><p style="margin-left: 0px;">hakira0007@gmail.com</p>
+  <p style="margin-left: 0px;">+91 9342512410</p></font>
+</section>
+
+
+  <!-- Footer -->
+  <BR><footer class="text-center py-10 text-gray-600 text-sm">
+    &copy; 2025 Hakkim Khan. All rights reserved.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+  </div>
+  <style>
+  #main-site {
+    transition: opacity 1.5s ease-in-out;
+  }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hasVisited = localStorage.getItem('hasVisited');
+
+  const introScreen = document.getElementById('intro-screen');
+  const mainSite = document.getElementById('main-site');
+
+  if (hasVisited) {
+    // Skip intro
+    introScreen.style.display = 'none';
+    mainSite.style.opacity = '1';
+  } else {
+    // Show intro once
+    localStorage.setItem('hasVisited', 'true');
+
+    setTimeout(() => {
+      introScreen.style.opacity = '0';
+      setTimeout(() => {
+        introScreen.style.display = 'none';
+        mainSite.style.opacity = '1';
+      }, 1000); // fade-out time
+    }, 5000); // time to show intro
+  }
+});
+</script>
+
+<!-- Butterfly Container -->
+<div class="butterfly-container"></div>
+<style>
+
+.butterfly-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.butterfly {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 15s linear infinite;
+  opacity: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+</style>
+<script>
+  const container = document.querySelector('.butterfly-container');
+
+  function createButterfly() {
+    const butterfly = document.createElement('div');
+    butterfly.classList.add('butterfly');
+    butterfly.innerText = '🦋';
+    
+    const size = Math.random() * 2 + 1;
+    const startLeft = Math.random() * 100;
+    const duration = Math.random() * 10 + 10;
+
+    butterfly.style.left = `${startLeft}vw`;
+    butterfly.style.fontSize = `${size}rem`;
+    butterfly.style.animationDuration = `${duration}s`;
+
+    container.appendChild(butterfly);
+
+    setTimeout(() => {
+      butterfly.remove();
+    }, duration * 1000);
+  }
+
+  // Create butterflies every 1 second
+  const butterflyInterval = setInterval(createButterfly, 1000);
+
+  // Stop creating butterflies after 20 seconds
+  setTimeout(() => {
+    clearInterval(butterflyInterval);
+  }, 10000); // 20000ms = 20 seconds
+</script>
+
+<!-- Secret Section with Password -->
+<div class="fixed bottom-4 right-4 opacity-10 hover:opacity-100 transition-opacity duration-500 z-50">
+  <button onclick="openPasswordPrompt()" class="bg-white bg-opacity-20 backdrop-blur-md text-white p-3 rounded-xl shadow-lg">
+    🔒 Secret Access
+  </button>
+</div>
+
+<!-- Password Prompt -->
+<div id="passwordModal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-white text-center w-80">
+    <h2 class="text-xl mb-4">Enter Password</h2>
+    <input type="password" id="secretPassword" class="w-full p-2 rounded text-black" placeholder="•••••••">
+    <div class="mt-4 flex justify-between">
+      <button onclick="checkPassword()" class="bg-green-500 px-4 py-1 rounded hover:bg-green-600">Submit</button>
+      <button onclick="closePasswordPrompt()" class="bg-red-500 px-4 py-1 rounded hover:bg-red-600">Cancel</button>
+    </div>
+    <p id="errorMsg" class="text-red-400 text-sm mt-2 hidden">Wrong password.</p>
+  </div>
+</div>
+
+
+<script>
+  function openPasswordPrompt() {
+    document.getElementById("passwordModal").classList.remove("hidden");
+  }
+
+  function closePasswordPrompt() {
+    document.getElementById("passwordModal").classList.add("hidden");
+    document.getElementById("errorMsg").classList.add("hidden");
+    document.getElementById("secretPassword").value = "";
+  }
+
+  function checkPassword() {
+    const password = document.getElementById("secretPassword").value;
+    const correctPassword = "kimra0007"; // <-- Change this to your secret password
+    if (password === correctPassword) {
+      window.location.href = "secret.html"; // Redirect to secret page
+    } else {
+      document.getElementById("errorMsg").classList.remove("hidden");
+    }
+  }
+</script>
+
+
+
+
+
+</body>
+</html>
